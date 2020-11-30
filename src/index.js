@@ -71,21 +71,13 @@ class DrawArea extends React.Component {
           lines: prevState.lines.push(new Immutable.List(arrMaps))
         }));    
         }
-        // console.log(arrMaps);
 
-        
-
-        // that.setState(prevState => ({
-          
-        //   lines: prevState.lines.push(new Immutable.List(arrMaps))
-        // })); 
         console.log(that.state.lines);
       })
       .catch(err => console.log(err))
     };
     loadLastAsync();
     
-    // this.setState(prevState.lines.push)
   }
 
   handleMouseMove(mouseEvent) {
@@ -163,6 +155,12 @@ class DrawArea extends React.Component {
 
   }
 
+  cleanDraw = () => {
+    this.setState(prevState => ({
+      lines: new Immutable.List()
+    }));
+  }
+
   
 
   renderContent() {
@@ -201,7 +199,12 @@ class DrawArea extends React.Component {
         <button
           onClick={this.testDraw}
         >
-          Prueba Dibujo
+          Test Draw
+        </button>
+        <button
+          onClick={this.cleanDraw}
+        >
+          Clear
         </button>
       </div>
     );
